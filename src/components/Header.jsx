@@ -2,7 +2,7 @@ import React from "react";
 
 import Tab from "./Tab";
 
-const Header = () => {
+const Header = ({tabObjArray}) => {
     return (
         <nav>
             <ul>
