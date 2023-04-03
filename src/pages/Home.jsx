@@ -5,8 +5,8 @@ const pageObj = {
     path: "home",
 };
 
-const component = () => {
+const Component = () => {
     return <div>Home page</div>;
 };
 
-export { component, pageObj };
+export { Component, pageObj };

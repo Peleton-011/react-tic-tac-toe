@@ -1,36 +1,40 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import fs from "fs";
 import "@picocss/pico";
 
 import Header from "./components/Header";
 
 function App() {
-    const tabObjArray = [
-        {
-            label: "Home",
-            path: "home",
-        },
-    ];
+    const { tabObjArray, routes } = getTabsAndRoutes();
     return (
         <Router className="container">
             <Header tabObjArray={tabObjArray} />
             <div className="App">Hello world from Peleton</div>
-            <Routes></Routes>
+            <Routes>{routes}</Routes>
         </Router>
     );
 }
 
+function getTabsAndRoutes() {
+    const tabObjArray = [];
+    const routes = getPages().map(({ Component, pageObj }) => {
+        tabObjArray.push(pageObj);
+        return <Route path={pageObj.path} element={<Component />} />;
+    });
+    return { tabObjArray, routes };
+}
+
 function getPages() {
     const pages = [];
-    fs.readdir("./pages", (err, files) => {
-        files.forEach((file) => {
-            console.log(file);
-            const page = import(`./pages/${file}.jsx`);
-            pages.push(page);
-        });
-    });
 
+    const files = import.meta.globEager('./pages/*.jsx');
+
+    for (const key in files) {
+        if (Object.hasOwnProperty.call(files, key)) {
+            const file = files[key];
+            pages.push(file);
+        }
+    }
     return pages;
 }
 
