@@ -19,7 +19,7 @@ function getTabsAndRoutes() {
     const tabObjArray = [];
     const routes = getPages().map(({ Component, pageObj }) => {
         tabObjArray.push(pageObj);
-        return <Route path={pageObj.path} element={<Component />} />;
+        return <Route key={pageObj.path} path={pageObj.path} element={<Component />} />;
     });
     return { tabObjArray, routes };
 }
