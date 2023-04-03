@@ -3,6 +3,7 @@ import React from "react";
 import Tab from "./Tab";
 
 const Header = ({tabObjArray}) => {
+    console.log(tabObjArray)
     return (
         <nav>
             <ul>
@@ -13,7 +14,7 @@ const Header = ({tabObjArray}) => {
             <ul>
             {
             tabObjArray.map((tab) => (
-                <Tab label={tab.label} path={tab.path} />
+                <Tab key={tab.path} label={tab.label} path={tab.path} />
             ))
         }
             </ul>

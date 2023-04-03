@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 
 const Tab = ({label, path}) => {
-  return (
+    console.log(label, path)
+    return (
     <Link to={`/${path}`}>{label}</Link>
   )
 }
