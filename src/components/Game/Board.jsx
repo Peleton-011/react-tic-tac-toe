@@ -7,7 +7,7 @@ const Board = () => {
     const width = 3;
     return (
         <div
-            className="grid"
+            className="grid board"
             style={{
                 display: "grid",
                 gridTemplateColumns: `repeat(${width}, 1fr)`,

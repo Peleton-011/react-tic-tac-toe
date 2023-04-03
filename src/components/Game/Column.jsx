@@ -4,7 +4,7 @@ import  { Cell } from "./Cell"
 
 const Column = ({ height, id }) => {
     console.log(getCells(height))
-    return <div>{getCells(height, id)}</div>;
+    return <div className="col">{getCells(height, id)}</div>;
 };
 
 function getCells(height, id) {

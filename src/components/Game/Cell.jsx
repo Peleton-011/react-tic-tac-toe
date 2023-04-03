@@ -1,7 +1,7 @@
 import React from "react";
 
 const Cell = () => {
-    return <button>Cell</button>;
+    return <button className="cell">Cell</button>;
 };
 
 export {Cell};

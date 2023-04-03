@@ -1,0 +1,18 @@
+
+.cell {
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    margin-bottom: 0px;
+}
+
+.col {
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.board {
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
