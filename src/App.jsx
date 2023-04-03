@@ -10,27 +10,28 @@ function App() {
         {
             label: "Home",
             path: "home",
-        }
+        },
     ];
     return (
         <Router className="container">
             <Header tabObjArray={tabObjArray} />
             <div className="App">Hello world from Peleton</div>
-            <Routes>
-
-            </Routes>
+            <Routes></Routes>
         </Router>
     );
 }
 
-async function getPages() {
+function getPages() {
     const pages = [];
     fs.readdir("./pages", (err, files) => {
         files.forEach((file) => {
             console.log(file);
             const page = import(`./pages/${file}.jsx`);
+            pages.push(page);
         });
     });
+
+    return pages;
 }
 
 export default App;

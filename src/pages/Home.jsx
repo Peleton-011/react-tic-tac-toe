@@ -6,7 +6,7 @@ const pageObj = {
 };
 
 const component = () => {
-    return <div>Home</div>;
+    return <div>Home page</div>;
 };
 
 export { component, pageObj };
