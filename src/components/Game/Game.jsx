@@ -1,23 +1,42 @@
+import React from "react";
+import { useState, useEffect } from "react";
 
-import React from 'react';
-import {useState} from "react"
+const defaultInput = {
+    size: [3, 3],
+    players: [
+        {
+            symbol: "X",
+            isPlayer: true,
+        },
+        {
+            symbol: "O",
+            isPlayer: false,
+        },
+    ],
+};
 
 class Game {
-
-    #size;
-    #players;
-
     game;
     setGame;
-    
+
     //size is an array [width, height]
-    constructor({size, players}) {
-        
-        [this.game, this.setGame] = useState(this.#newBoard(size));
-        this.#players = 3; 
-                
+    //players is an array of two player objects
+    //a player object is such that {symbol: "X", isPlayer: true}
+    constructor({ size, players }) {
+        [this.game, this.setGame] = useState({
+            size: size,
+            board: this.#newBoard(size),
+            players: players,
+        });
+
+        useEffect(this.#checkWinState, [this.game.board]);
     }
-    #newBoard (size) {
+
+    #checkWinState() {
+        return;
+    }
+
+    #newBoard(size) {
         const board = [];
         for (let col = 0; col < this.size[0]; col++) {
             board.push([]);
