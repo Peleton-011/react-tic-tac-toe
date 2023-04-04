@@ -49,6 +49,10 @@ class Game {
             for (let row = 0; row < this.game.size[1]; row++) {
                 onClicks[col].push(
                     () => {
+                        if (!this.currPlayer.isPlayer) {
+                            return;
+                        }
+                        
                         this.#setCell(
                             {
                                 game: this.game,
