@@ -1,5 +1,18 @@
+:root {
+    --grid-size:calc(min(max(70vh, 300px) ,max(50vw, 300px)));
+    --size: 3;
+    --cell-size: calc(var(--grid-size) / var(--size));
+}
+
+body {
+    justify-content: center;
+}
 
 .cell {
+
+    height: var(--cell-size);
+    width: var(--cell-size);
+
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 
@@ -7,12 +20,23 @@
 }
 
 .col {
+
+    height: var(--grid-size);
+    width: var(--cell-size);
+
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
 
 .board {
+
+    width: var(--grid-size);
+    height: var(--grid-size);
+
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+
+    display: grid;
+    grid-template-columns: repeat(var(--size), var(--cell-size));
 }
 

@@ -8,10 +8,6 @@ const Board = () => {
     return (
         <div
             className="grid board"
-            style={{
-                display: "grid",
-                gridTemplateColumns: `repeat(${width}, 1fr)`,
-            }}
         >
             {getColumns(height, width)}
         </div>

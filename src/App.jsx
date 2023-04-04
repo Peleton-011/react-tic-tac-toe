@@ -8,9 +8,8 @@ import Header from "./components/Header";
 function App() {
     const { tabObjArray, routes } = getTabsAndRoutes();
     return (
-        <Router className="container">
+        <Router >
             <Header tabObjArray={tabObjArray} />
-            <div className="App">Hello world from Peleton</div>
             <Routes>{routes}</Routes>
         </Router>
     );

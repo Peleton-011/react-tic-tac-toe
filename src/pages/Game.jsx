@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import Board from "../components/Game/Board";
 
@@ -8,13 +8,11 @@ const pageObj = {
 };
 
 const Component = () => {
-  return (
-    <>
-    <div>Game</div>
-    <Board />
-    </>
+    return (
+        <main className="container">
+            <Board />
+        </main>
+    );
+};
 
-  )
-}
-
-export {Component, pageObj}
+export { Component, pageObj };
