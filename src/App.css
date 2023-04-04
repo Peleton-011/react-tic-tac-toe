@@ -16,6 +16,8 @@ body {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 
+    box-shadow: none;
+
     margin-bottom: 0px;
 }
 
@@ -44,11 +46,11 @@ body {
 /* Set gridlines */
 
 .col:not(:last-child) {
-    border-right: var(--gridline-size) solid #121212;
+    border-right: var(--gridline-size) solid rgba(18, 18, 18, 75%);
 }
 
-.cell:not(:last-child) {
-    border-bottom: var(--gridline-size) solid #121212;
+.cell:not(:last-child):not(:active):not(:hover) {
+    border-bottom: var(--gridline-size) solid rgba(18, 18, 18, 75%);
 }
 
 
