@@ -1,4 +1,5 @@
 :root {
+    --gridline-size: 3px;
     --grid-size:calc(min(max(70vh, 300px) ,max(50vw, 300px)));
     --size: 3;
     --cell-size: calc(var(--grid-size) / var(--size));
@@ -9,7 +10,6 @@ body {
 }
 
 .cell {
-
     height: var(--cell-size);
     width: var(--cell-size);
 
@@ -22,21 +22,55 @@ body {
 .col {
 
     height: var(--grid-size);
-    width: var(--cell-size);
+    width: calc(var(--cell-size) + var(--gridline-size));
 
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
 
 .board {
+    box-sizing: border-box;
 
-    width: var(--grid-size);
-    height: var(--grid-size);
+    width: calc(var(--grid-size) + var(--gridline-size));
+    height: calc(var(--grid-size) + var(--gridline-size));
 
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 
     display: grid;
-    grid-template-columns: repeat(var(--size), var(--cell-size));
+    grid-template-columns: repeat(var(--size), calc(var(--cell-size) + var(--gridline-size)));
+}
+
+/* Set gridlines */
+
+.col:not(:last-child) {
+    border-right: var(--gridline-size) solid #121212;
+}
+
+.cell:not(:last-child) {
+    border-bottom: var(--gridline-size) solid #121212;
+}
+
+
+/* Set corners */
+
+.cell {
+    border-radius: 0;
+}
+
+.col:first-child  > .cell:first-child{
+    border-radius: 1rem 0 0 0;
+}
+
+.col:first-child > .cell:last-child {
+    border-radius: 0 0 0 1rem;
+}
+
+.col:last-child > .cell:first-child {
+    border-radius: 0 1rem 0 0;
+}
+
+.col:last-child > .cell:last-child {
+    border-radius: 0 0 1rem 0;
 }
 
