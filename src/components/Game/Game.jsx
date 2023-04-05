@@ -10,7 +10,7 @@ const defaultInput = {
         },
         {
             symbol: "O",
-            isPlayer: false,
+            isPlayer: true,
         },
     ],
 };
@@ -35,18 +35,17 @@ class Game {
 
         useEffect(() => {
             this.#checkWinState();
-            this.setCurrPlayer(
-                this.game.players.filter((player) => {
-                    player !== this.currPlayer;
-                })[0]
-            );
+            const nextPlayer = this.game.players.filter((player) => player !== this.currPlayer)[0];
+
+            console.warn("From ", this.currPlayer, " to ", nextPlayer);
+            this.setCurrPlayer(nextPlayer);
         }, [this.game.board]);
     }
 
-    setCell({ game: game, setGame: setGame, row, col, player }) {
-        const newGame = game.game;
-        newGame.board[col][row] = player.symbol;
-        setGame(newGame);
+    setCell({ row, col }) {
+        const game = this.game;
+        game.board[col][row] = this.currPlayer.symbol;
+        this.setGame(game);
     }
 
     #checkWinState() {

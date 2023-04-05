@@ -20,12 +20,12 @@ const Component = () => {
             },
             {
                 symbol: "O",
-                isPlayer: false,
+                isPlayer: true,
             },
         ],
     }))
 
-    // console.log("Game: " + JSON.stringify(Game, null, 2));
+    console.log("Game: " + JSON.stringify(Game, null, 2));
     return (
         <main className="container">
                 <Board state={[Game, setGame]} />
