@@ -2,24 +2,25 @@ import React from "react";
 
 import { Column } from "./Column";
 
-const Board = () => {
+const Board = ({ state }) => {
     const height = 3;
     const width = 3;
-    return (
-        <div
-            className="grid board"
-        >
-            {getColumns(height, width)}
-        </div>
-    );
-};
-
-function getColumns(height, width) {
-    const res = [];
-    for (let i = 0; i < width; i++) {
-        res.push(<Column key={i} id={i} height={height} />);
+    const [Game, setGame] = state;
+    return <div className="grid board">{getColumns()}</div>;
+    function getColumns() {
+        const columns = [];
+        for (let col = 0; col < width; col++) {
+            columns.push(
+                <Column
+                    key={col}
+                    height={height}
+                    state={state}
+                    col={col}
+                />
+            );
+        }
+        return columns;
     }
-    return res;
-}
+};
 
 export default Board;

@@ -21,9 +21,6 @@ class Game {
 
     currPlayer;
     setCurrPlayer;
-
-    onClicks;
-
     //size is an array [width, height]
     //players is an array of two player objects
     //a player object is such that {symbol: "X", isPlayer: true}
@@ -38,45 +35,23 @@ class Game {
 
         useEffect(this.#checkWinState, [this.game.board]);
 
-        this.onClicks = this.#getOnClicks();
+        console.log("about to get onClicks");
+
     }
 
-    #getOnClicks () {
-        const onClicks = [];
+    setCell({ game: game, setGame: setGame, row, col, player }) {
+        const newGame = game.game;
 
-        for (let col = 0; col < this.game.size[0]; col++) {
-            onClicks.push([]);
-            for (let row = 0; row < this.game.size[1]; row++) {
-                onClicks[col].push(
-                    () => {
-                        if (!this.currPlayer.isPlayer) {
-                            return;
-                        }
-                        
-                        this.#setCell(
-                            {
-                                game: this.game,
-                                setGame: this.setGame,
-                                col: col,
-                                row: row,
-                                player: this.currPlayer
-                            }
-                        )
-                    }
-                )
-                
-            }
-        }
-    }
+        console.log(JSON.stringify(game, null, 2))
+        console.log(JSON.stringify(game.board, null, 2));
 
-    #setCell({game: game, setGame: setGame, row, col, player}) {
-        const newGame = game;
-
-        const newBoard = game.board;
+        const newBoard = newGame.board;
 
         newBoard[col][row] = player.symbol;
 
-        newGame = {...game, board: newBoard};
+        console.warn(JSON.stringify(newGame, null, 2))
+        console.log(JSON.stringify(newBoard, null, 2))
+        newGame.board = newBoard;
 
         setGame(newGame);
     }
@@ -87,12 +62,14 @@ class Game {
 
     #newBoard(size) {
         const board = [];
-        for (let col = 0; col < this.size[0]; col++) {
+        for (let col = 0; col < size[0]; col++) {
             board.push([]);
-            for (let row = 0; row < this.size[1]; row++) {
-                board[col].push([]);
+            for (let row = 0; row < size[1]; row++) {
+                board[col].push("none");
             }
         }
         return board;
     }
 }
+
+export { Game };

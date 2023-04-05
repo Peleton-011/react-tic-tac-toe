@@ -1,7 +1,11 @@
 import React from "react";
 
-const Cell = () => {
-    return <button className="cell">Cell</button>;
+const Cell = ({ onClick }) => {
+    return (
+        <button className="cell" onClick={onClick}>
+            Cell
+        </button>
+    );
 };
 
-export {Cell};
+export { Cell };
