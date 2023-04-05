@@ -3,7 +3,6 @@ import React from "react";
 import Tab from "./Tab";
 
 const Header = ({tabObjArray}) => {
-    console.log(tabObjArray)
     return (
         <nav>
             <ul>

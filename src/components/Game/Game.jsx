@@ -33,26 +33,19 @@ class Game {
 
         [this.currPlayer, this.setCurrPlayer] = useState(players[0]);
 
-        useEffect(this.#checkWinState, [this.game.board]);
-
-        console.log("about to get onClicks");
-
+        useEffect(() => {
+            this.#checkWinState();
+            this.setCurrPlayer(
+                this.game.players.filter((player) => {
+                    player !== this.currPlayer;
+                })[0]
+            );
+        }, [this.game.board]);
     }
 
     setCell({ game: game, setGame: setGame, row, col, player }) {
         const newGame = game.game;
-
-        console.log(JSON.stringify(game, null, 2))
-        console.log(JSON.stringify(game.board, null, 2));
-
-        const newBoard = newGame.board;
-
-        newBoard[col][row] = player.symbol;
-
-        console.warn(JSON.stringify(newGame, null, 2))
-        console.log(JSON.stringify(newBoard, null, 2))
-        newGame.board = newBoard;
-
+        newGame.board[col][row] = player.symbol;
         setGame(newGame);
     }
 
